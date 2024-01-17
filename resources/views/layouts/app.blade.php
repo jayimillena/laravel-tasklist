@@ -4,19 +4,24 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title inertia>{{ config('app.name', 'Laravel') }}</title>
+        {{-- Temporarily commented out by Jay Millena this January 17, 2024 --}}
+        {{-- <title inertia>{{ config('app.name', 'Laravel') }}</title> --}}
+        <title>@yield('title')</title>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
         <!-- Scripts -->
-        @routes
+        {{-- Temporarily commented out by Jay Millena this January 17, 2024 --}}
+        {{-- @routes
         @viteReactRefresh
         @vite(['resources/js/app.jsx', "resources/js/Pages/{$page['component']}.jsx"])
-        @inertiaHead
+        @inertiaHead --}}
     </head>
     <body class="font-sans antialiased">
-        @inertia
+        {{-- Temporarily commented out by Jay Millena this January 17, 2024 --}}
+        {{-- @inertia --}}
+        @yield('content')
     </body>
 </html>
