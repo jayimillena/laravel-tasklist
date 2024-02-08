@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('tasks', function (Blueprint $table) {
             $table->id()->unique();
-            $table->string('title')->required();
-            $table->string('description')->required();
-            $table->text('long_description')->required();
+            $table->string('title');
+            $table->string('description');
+            $table->text('long_description');
             $table->boolean('completed')->default(false);
             $table->timestamps();
         });
