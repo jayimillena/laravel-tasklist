@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Task;
 
 class TaskController extends Controller
 {
@@ -35,7 +36,7 @@ class TaskController extends Controller
      */
     public function show(string $id)
     {
-        //
+        return view('show', ['task' => Task::find($id)]);
     }
 
     /**
