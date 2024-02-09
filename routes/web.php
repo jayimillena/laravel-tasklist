@@ -15,5 +15,7 @@ use App\Http\Controllers\{HomeController, TaskController};
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('home.index');
+Route::get('/task/create', [TaskController::class, 'create'])->name('task.create');
+Route::post('/task/store', [TaskController::class, 'store'])->name('task.store');
 Route::get('/task/{id}', [TaskController::class, 'show'])->name('task.show');
   

@@ -20,7 +20,7 @@ class TaskController extends Controller
      */
     public function create()
     {
-        //
+        return view('create');
     }
 
     /**
@@ -28,7 +28,7 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd('We have reached the store route');
     }
 
     /**
