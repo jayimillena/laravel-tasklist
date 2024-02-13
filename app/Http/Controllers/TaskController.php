@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use App\Models\Task;
+use App\Http\Requests\TaskRequest;
 
 class TaskController extends Controller
 {
@@ -12,7 +14,7 @@ class TaskController extends Controller
      */
     public function index()
     {
-        //
+        return view('index', ['tasks' => Task::all()]);
     }
 
     /**
@@ -26,9 +28,13 @@ class TaskController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(TaskRequest $request)
     {
-        dd('We have reached the store route');
+        $task_data = $request->validated();
+        $task_saved = Task::create($task_data);
+
+        Session::flash('message', 'Tasks has been saved!'); 
+        return view('index', ['tasks' => Task::all()]);
     }
 
     /**
