@@ -4,8 +4,8 @@
 
 @section('content')
 
-  @if(session()->has('message'))
-    <div><span name="message">{{ session('message') }}</span></div>   
+  @if(session()->has('success'))
+    <div><span name="success">{{ session('success') }}</span></div>   
   @endif
 
   <div><a href="{{ route('task.create') }}">Add task</a></div>

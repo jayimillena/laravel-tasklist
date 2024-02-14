@@ -33,8 +33,8 @@ class TaskController extends Controller
         $task_data = $request->validated();
         $task_saved = Task::create($task_data);
 
-        Session::flash('message', 'Tasks has been saved!'); 
-        return view('index', ['tasks' => Task::all()]);
+        return view('index', ['tasks' => Task::all()])
+            ->with('success', 'Task created succesfully!');
     }
 
     /**
