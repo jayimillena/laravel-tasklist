@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Session;
 use App\Models\Task;
 use App\Http\Requests\TaskRequest;
 
@@ -30,8 +29,7 @@ class TaskController extends Controller
      */
     public function store(TaskRequest $request)
     {
-        $task_data = $request->validated();
-        $task_saved = Task::create($task_data);
+        $task_saved = Task::create($request->validated());
 
         return view('index', ['tasks' => Task::all()])
             ->with('success', 'Task created succesfully!');
@@ -48,17 +46,20 @@ class TaskController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Task $task)
     {
-        //
+        return view('edit', ['task' => $task]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Task $task, TaskRequest $request)
     {
-        //
+        $task->update($request->validated());
+
+        return view('index', ['tasks' => Task::all()])
+            ->with('success', 'Task updated succesfully!');
     }
 
     /**
