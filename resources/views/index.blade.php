@@ -13,7 +13,7 @@
   <div>Here are tasks!</div>
   
   @forelse ($tasks as $task)
-    <div><a href="{{ route('task.show', ['id' => $task->id]) }}">{{ $task->title }}</a></div>
+    <div><a href="{{ route('task.show', ['task' => $task->id]) }}">{{ $task->title }}</a></div>
   @empty
     <div>There are no tasks!</div>  
   @endforelse  

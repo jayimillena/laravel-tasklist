@@ -11,5 +11,13 @@
         <p>{{ $task->created_at->diffForHumans() }}</p>
         <p>{{ $task->updated_at->diffForHumans() }}</p>
     </div>
-    
+
+    <div>
+        <form action="{{ route('task.destroy', ['task' => $task->id]) }}" method="POST">
+            @csrf
+            @method('DELETE')
+            <button type="submit">Delete</button>
+        </form>
+    </div>
+
 @endsection
