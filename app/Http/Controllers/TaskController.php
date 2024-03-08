@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Task;
 use App\Http\Requests\TaskRequest;
 
@@ -13,7 +12,7 @@ class TaskController extends Controller
      */
     public function index()
     {
-        return view('index', ['tasks' => Task::all()]);
+        return view('index', ['tasks' => Task::latest()->paginate(10)]);
     }
 
     /**
@@ -31,7 +30,7 @@ class TaskController extends Controller
     {
         $task_saved = Task::create($request->validated());
 
-        return view('index', ['tasks' => Task::all()])
+        return view('index', ['tasks' => Task::latest()->paginate(10)])
             ->with('success', 'Task created succesfully!');
     }
 
@@ -58,7 +57,7 @@ class TaskController extends Controller
     {
         $task->update($request->validated());
 
-        return view('index', ['tasks' => Task::all()])
+        return view('index', ['tasks' => Task::latest()->paginate(10)])
             ->with('success', 'Task updated succesfully!');
     }
 
