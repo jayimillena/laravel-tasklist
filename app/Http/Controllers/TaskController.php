@@ -71,4 +71,12 @@ class TaskController extends Controller
         return view('index', ['tasks' => Task::all()])
             ->with('success', 'Task deleted succesfully!');
     }
+
+    public function toggleComplete(Task $task)
+    {
+        $task->toggleComplete();
+
+        return redirect()->back()
+            ->with('success', 'Task updated succesfully!');
+    }
 }
