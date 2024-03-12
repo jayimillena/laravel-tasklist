@@ -4,10 +4,6 @@
 
 @section('content')
 
-    <div>
-        <a href="{{ route('task.create') }}">Add task</a>
-    </div>
-
     <div class="task">
         <h1>{{ $task->title }}</h1> <a href="{{ route('task.edit', ['task' => $task]) }}">Edit</a>
         <h3>{{ $task->description }}</h3>
@@ -24,7 +20,7 @@
     </div>
 
     <div>
-        <form method="POST" action="{{ route('task.toggle-complete', ['id' => $task->id]) }}">
+        <form method="POST" action="{{ route('tasks.toggle-complete', ['task' => $task]) }}">
             @csrf
             @method('PUT')
             <button type="submit">
