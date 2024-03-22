@@ -5,7 +5,11 @@
 @section('content')
 
   @if(session()->has('success'))
-    <div><span name="success">{{ session('success') }}</span></div>   
+    <div class="mb-10 rounded border border-green-400 bg-green-100 px-4 py-3"
+         role="alert">
+      <strong class="font-bold">Success!</strong>
+      <div>{{ session('success') }}</div>
+    </div>   
   @endif
 
   <h1 class="mb-4 text-2xl">@yield('title')</h1>
